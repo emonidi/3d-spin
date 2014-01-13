@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+      
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src = 'reel.js'></script>
+        <script type='text/javascript'>
+          $(document).ready(function(){
+                //BUILD REEL 1
+                var reel1 = new REEL().build('#reel1');
+                //BUILD REEL 2
+                var reel2 = new REEL().build('#reel2');
+                 //BUILD REEL 3
+                var reel3 = new REEL().build('#reel3');
+                //BUILD REEL 4
+                var reel4 = new REEL().build('#reel4');
+               //BUILD REEL 
+                var reel5 = new REEL().build('#reel5');
+              
+              //change to 2.5D
+               $("#perscpective-view").change(function(){
+                  if($(this).is(':checked')){
+                    $("#reel-holder").addClass('perspective').removeClass('flat');
+                
+                  }else{
+                    $("#reel-holder").removeClass('perspective').addClass('flat');
+                  }
+               });
+              
+              //change perspective
+              $("#perspectiveOrigin").change(function(){
+                var input =parseInt($(this).val());
+                if(typeof parseInt(input) !== NaN){
+                    $("#reel-holder").css({
+                        "-webkit-perspective":$(this).val(),
+                          "-moz-perspective":$(this).val(),
+                    });
+                   
+                }
+                
+              });
+              
+              
+               //change perspective origin
+              $("#perspective").change(function(){
+                var input  =parseInt($(this).val());
+                if(typeof parseInt(input) !== NaN){
+                    console.log(input);
+                    $("#reel-holder").css({
+                        "-webkit-perspective-origin":$(this).val()+"px",
+                    });
+                  
+                }
+                
+              });
+            
+              //spin the reels
+              $("#spin").click(function(){
+                spinReels();
+              })
+              
+              function spinReels(){
+                 reel1.startSpinFrame();  
+                 setTimeout(function(){
+                    reel2.startSpinFrame();
+                    
+                 },300);
+                 
+                 setTimeout(function(){
+                    reel3.startSpinFrame();
+                 },600);
+              
+            
+                 setTimeout(function(){
+                    reel4.startSpinFrame();
+                 },900);
+                  
+                  setTimeout(function(){
+                    reel5.startSpinFrame();
+                  },1200);
+              }
+              
+              
+              //stop spinning
+              $("#stop").click(function(){
+                    stopReels();
+              });
+              
+              
+              function stopReels(){
+                 reel1.stopSpinFrame().finalAnimation();
+                 reel2.stopSpinFrame().finalAnimation();
+                 reel3.stopSpinFrame().finalAnimation();
+                 reel4.stopSpinFrame().finalAnimation();
+                 reel5.stopSpinFrame().finalAnimation();
+              }
+              
+              
+              
+              
+              
+                
+                
+          });            
+        </script>
+        
+    </head>
+    
+    <body>
+        <div id='viewport'>
+            <div id='reel-holder'>
+                <div class="reel" id = 'reel1'>
+                   
+                </div>
+                <div  class="reel" id = 'reel2'>
+                
+                </div>
+                <div class="reel" id = 'reel3'>
+                
+                </div>
+                <div class="reel" id = 'reel4'>
+                
+                </div>
+                <div class="reel" id = 'reel5'>
+                
+                </div>
+            </div>
+            
+        </div>
+        <div id="controls">
+                <ul>
+                    <li>
+                        <input type='checkbox' id='perscpective-view'>
+                        <label for="perspective-view">2.5D</label>
+                        
+                    </li>
+               <!--     <li>
+                        <label for='perspective'>
+                            Perspective:
+                            <input type="number" id='perspective'/>
+                        </label>
+                    </li>
+                    <li>
+                        <label for='perspectiveOrigin'>
+                            Perspective Origin (%):
+                            <input type="number" id='perspectiveOrigin'/>
+                        </label>
+                    </li> -->
+                    <li>
+                        <button id='spin' style="min-height:80px;min-width:80px">Spin</button>
+                         <button id='stop'  style="min-height:80px;min-width:80px">Stop</button>
+                    </li>
+                                            
+                </ul>
+                <p style='color:red'>* For flat perspective use following values: Perspective = 0, Perspective Origin = 0. </p>
+            </div>
+    </body>
+</html>

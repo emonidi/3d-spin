@@ -1,0 +1,200 @@
+/* RESET */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after{content:"";content:none}q:before,q:after{content:"";content:none}table{border-collapse:collapse;border-spacing:0}
+
+body{
+width:100%;
+margin:0 auto;
+}
+
+#viewport{
+width: 100%;
+
+margin: 0 auto;
+position: relative;
+margin-left: 50%;
+left: -250px;
+margin-top: 30%;
+}
+
+
+#reel-holder{
+margin:0 auto;
+display:inline;
+-webkit-transform-style:preserve-3d;
+-moz-transform-style:preserve-3d;
+
+    
+-webkit-perspective-origin-x: 500px;
+-webkit-perspective-origin-y: 50%;
+-webkit-perspective: 3000;
+    
+-webkit-perspective-origin-x: 500px;
+-webkit-perspective-origin-y: 50%;
+-webkit-perspective: 3000;
+  
+}
+
+#reel-holder.flat{
+-webkit-animation-name: hide3D;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: 1;
+-webkit-animation-duration:1s;
+-webkit-transform: rotateY(0deg);
+
+-moz-animation-name: hide3D;
+-moz-animation-timing-function: linear;
+-moz-animation-iteration-count: 1;
+-moz-animation-duration:1s;
+-moz-transform: rotateY(0deg);
+    
+    
+    
+position:absolute;
+}
+
+#reel-holder.perspective{
+
+    
+    -moz-animation-name: show3D;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-duration:1s;
+    -moz-transform: rotateY(35deg);
+    
+     -webkit-animation-name: show3D;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration:1s;
+    -webkit-transform: rotateY(35deg);
+    position:absolute;
+}
+
+ @-webkit-keyframes show3D {
+    from { -webkit-transform: rotateY(0deg);    }
+    to   { -webkit-transform: rotateY(35deg); }
+  }
+
+ @-webkit-keyframes hide3D {
+    from { -webkit-transform: rotateY(35deg);    }
+    to   { -webkit-transform: rotateY(0deg); }
+  }
+
+ @-moz-keyframes show3D {
+    from { -moz-transform: rotateY(0deg);    }
+    to   { -moz-transform: rotateY(30deg); }
+  }
+
+ @-moz-keyframes hide3D {
+    from { -moz-transform: rotateY(30deg);    }
+    to   { -moz-transform: rotateY(0deg); }
+  }
+
+
+
+
+
+
+
+#viewport .reel{
+    float:left;
+    width:100px;
+    height:100px;
+    list-style:none;
+    -webkit-transform-style:preserve-3d;
+    -moz-transform-style:preserve-3d;
+    
+  
+}
+
+.flat{
+    -webkit-transform-style:flat;
+}
+
+
+
+@-webkit-keyframes ReelAnimation{
+    0% {-webkit-transform:rotateX(0deg); -webkit-transform-origin:center}
+    100%{-webkit-transform:rotateX(-360deg);-webkit-transform-origin:center}
+}
+
+@-webkit-keyframes ReelAnimation{
+    0% {-webkit-transform:rotateX(0deg); -webkit-transform-origin:center}
+    100%{-webkit-transform:rotateX(-360deg);-webkit-transform-origin:center}
+}
+
+@-moz-keyframes ReelAnimation{
+    0% {-moz-transform:rotateX(0deg);}
+    100%{-moz-transform:rotateX(-360deg);}
+}
+
+@-moz-keyframes ReelAnimation{
+    0% {-moz-transform:rotateX(0deg);}
+    100%{-moz-transform:rotateX(-360deg);}
+}
+
+
+
+#viewport .reel .block{
+display: block;
+position: absolute;
+width: 100px;
+height: 100px;
+}
+
+
+
+#viewport .reel .block img{
+    width:100px;
+    height:100px;
+}
+
+
+#viewport .reel.spinning{
+-webkit-animation-name: ReelAnimation;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-duration:1s;
+
+    
+-moz-animation-name: ReelAnimation;
+-moz-animation-timing-function: linear;
+-moz-animation-iteration-count: infinite;
+-moz-animation-duration:1s;
+
+}
+
+#viewport .reel.beginSpin{
+-webkit-animation-name: beginSpin;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: 1;
+-webkit-animation-duration:.5s;
+-webkit-transform:rotateX(15deg);
+    
+-moz-animation-name: begin-spin;
+-moz-animation-timing-function: linear;
+-moz-animation-iteration-count: 1;
+-moz-animation-duration:.5s;
+-moz-transform:rotateX(15deg);
+}
+
+@-webkit-keyframes beginSpin{
+    0% {-webkit-transform:rotateX(0deg); -webkit-transform-origin:center}
+    100%{-webkit-transform:rotateX(15deg);-webkit-transform-origin:center}
+}
+
+@-moz-keyframes beginSpin{
+    0% {-moz-transform:rotateX(0deg); -webkit-transform-origin:center}
+    100%{-moz-transform:rotateX(15deg);-webkit-transform-origin:center}
+}
+
+
+#controls{
+text-align:left;
+width: 100%%;
+position: absolute;
+top:0px;
+}
+
+#controls li{
+display:inline-table;
+}
